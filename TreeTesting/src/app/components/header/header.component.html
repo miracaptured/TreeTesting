@@ -1,0 +1,7 @@
+<mat-toolbar *transloco="let t;">
+    <span>
+        <img src="../../../assets/images/IAIA600.svg" alt="Ia-Ia" style="object-fit: scale-down" height="40px"/>
+    </span>
+    <span class="flex-spacer"></span>
+    <button mat-button (click)="logout()" *ngIf="checkUser()">{{t('login.logOut')}}</button>
+</mat-toolbar>

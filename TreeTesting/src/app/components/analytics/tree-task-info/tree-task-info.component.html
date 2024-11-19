@@ -1,0 +1,33 @@
+<div *transloco="let t" fxLayout="column">
+    <p>{{t('analytics.tree.trueRouteLabel')}}: <b>{{taskInfo.trueRoute.join(' -> ')}}</b></p>
+    <p>{{t('help.treeTesting.p9')}}
+        <br>1 - {{t('help.treeTesting.p10')}}
+        <br>2 - {{t('help.treeTesting.p11')}}
+        <br>3-4 - {{t('help.treeTesting.p12')}}
+        <br>5 - {{t('help.treeTesting.p13')}}
+    </p>
+    <p>
+        {{t('help.treeTesting.p14')}}
+        <br>{{t('help.treeTesting.p15')}}
+    </p>
+    <div fxLayout="row" fxFlex="100" fxLayoutAlign="center center">
+        <app-semi-circle-chart
+            [labels]="[t('analytics.tree.directSuccessPercent'), t('analytics.tree.indirectSuccessPercent'), t('analytics.tree.failPercent')]"
+            [values]="[taskInfo.directSuccessPercent, taskInfo.indirectSuccessPercent, taskInfo.failPercent]"
+            [all]="taskInfo.totalRoutes"
+            [showAbsolute]="true"
+            [total]="taskInfo.totalRoutes"
+            [totalLabel]="t('analytics.tree.totalRoutesLabel')">
+        </app-semi-circle-chart>
+        <app-semi-circle-chart [labels]="[t('analytics.tree.directnessPercent')]" [values]="[taskInfo.directnessPercent]"></app-semi-circle-chart>
+        <app-semi-circle-chart
+            [labels]="['> 3σ', '2σ < Δt < 3σ', 'σ < Δt < 2σ', '< σ']"
+            [values]="[taskInfo.percentTimeOut3Std, taskInfo.percentTimeBetween23Std, taskInfo.percentTimeBetween12Std, taskInfo.percentTimeInside1Std]"
+            [all]="taskInfo.totalRoutes"
+            [showAbsolute]="true"
+            [total]="taskInfo.treeGrade"
+            [totalLabel]="t('analytics.tree.treeGradeLabel')"
+        >
+        </app-semi-circle-chart>
+    </div>
+</div>

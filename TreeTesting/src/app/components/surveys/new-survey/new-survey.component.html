@@ -1,0 +1,86 @@
+<div class="form-builder" cdkDropListGroup *transloco="let t;">
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav
+            mode="side"
+            opened class="sidenav-fixed"
+            [hidden]="editOnly">
+            <mat-nav-list
+                cdkDropList
+                [cdkDropListData]="TaskTypeEnum.values()"
+                cdkDropListSortingDisabled
+                id="task-types-list"
+                cdkDropListConnectedTo="page-"
+                style="min-width: 250px"
+                >
+                <h3 style="margin-left: 10px">{{t('survey.constructorLabel')}}</h3>
+                <mat-divider></mat-divider>
+                <mat-list-item
+                    *ngFor="let taskType of TaskTypeEnum.values()"
+                    cdkDrag
+                    [cdkDragData]="taskType">
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-icon matListIcon [svgIcon]="getIcon(taskType)"></mat-icon>
+                        <h4 matLine>{{ t(TaskTypeEnum.toString(taskType)) }}</h4>
+                    </div>
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <div class="form-content" fxLayout="column" fxLayoutGap="20px">
+                <h2><app-conditional-input [(value)]="survey.name" [label]="t('survey.surveyNameLabel')"></app-conditional-input></h2>
+                <h3><app-conditional-input [(value)]="survey.description" [label]="t('survey.surveyDescriptionLabel')"></app-conditional-input></h3>
+                <div fxLayout="column" fxLayoutGap="20px">
+                    <div class="task-group" *ngFor="let taskGroup of survey.taskGroups; let i = index">
+                        <mat-card [id]="'page-' + i" cdkDropList (cdkDropListDropped)="drop($event)">
+                            <mat-card-header fxLayout="row">
+                                <app-conditional-input [(value)]="taskGroup.name"></app-conditional-input>
+                                <span class="flex-spacer"></span>
+                                <button
+                                    mat-icon-button
+                                    (click)="removeTaskGroup(i)"
+                                    [hidden]="editOnly">
+                                    <mat-icon svgIcon="delete_outline"></mat-icon>
+                                </button>
+                            </mat-card-header>
+                            <mat-card-content fxLayout="column" fxLayoutGap="20px">
+                                <mat-list cdkDropList [cdkDropListData]="taskGroup.tasks" (cdkDropListDropped)="dropTask($event, i)">
+                                    <div *ngFor="let task of taskGroup.tasks; let taskId = index" style="height: max-content; margin-top: 1vw" cdkDrag>
+                                        <mat-list-item style="height: 100%; box-sizing: border-box;">
+                                            <div fxLayout="row">
+                                                <h2 matLine>{{ t(TaskTypeEnum.toString(task.type ?? 0)) }}</h2>
+                                                <span class="flex-spacer"></span>
+                                                <button
+                                                    mat-icon-button
+                                                    (click)="removeTask(i, taskId)"
+                                                    [hidden]="editOnly">
+                                                    <mat-icon svgIcon="delete"></mat-icon>
+                                                </button>
+                                            </div>
+                                            <app-new-task-form [(task)]="taskGroup.tasks[taskId]" [editOnly]="editOnly"></app-new-task-form>
+                                        </mat-list-item>
+                                    </div>
+                                </mat-list>
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-divider></mat-divider>
+                    </div>
+                </div>
+                <button
+                    style="width: 100%; min-height: 60px;"
+                    mat-raised-button
+                    (click)="addTaskGroup()"
+                    [hidden]="editOnly"
+                    >{{t('survey.addTaskGroupButton')}}
+                </button>
+                <button
+                    style="width: 100%; min-height: 60px;"
+                    mat-raised-button
+                    (click)="saveSurvey()"
+                    >{{t('survey.submit')}}
+                </button>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+  

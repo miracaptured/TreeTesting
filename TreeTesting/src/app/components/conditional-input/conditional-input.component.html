@@ -1,0 +1,23 @@
+<div *ngIf="!isEditing" fxLayout="row" fxLayoutGap="10px" style="display: flex; align-items: center">
+    {{value}}
+    <button
+        mat-icon-button
+        (click)="isEditing= true"
+        [hidden]="editOnly">
+        <mat-icon svgIcon="edit"></mat-icon>
+    </button>
+</div>
+<mat-form-field *ngIf="isEditing">
+    <mat-label>{{label}}</mat-label>
+    <input matInput
+        type="text"
+        [(ngModel)]="value"
+        (change)="changeVal()"
+        name="inputName"
+        (keydown.enter)="isEditing = false; changeVal();"
+        (blur)="isEditing = false; changeVal();"
+        [cdkTrapFocusAutoCapture]="isEditing"
+        [cdkTrapFocus]="isEditing"
+        #inputName="ngModel"
+        [disabled]="editOnly"
+    required>

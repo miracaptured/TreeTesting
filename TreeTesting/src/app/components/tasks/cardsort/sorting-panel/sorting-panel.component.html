@@ -1,0 +1,28 @@
+
+<mat-toolbar
+    *ngIf="!isClosedTypeTest()"
+    class="toolbar">
+    <div
+        *transloco="let t;"
+        class="toolbar-contents">
+        <mat-form-field>
+            <mat-label>
+                {{t('tasks.cardsort.categoryNameLabel')}}
+            </mat-label>
+            <input
+                matInput
+                type="text"
+                [(ngModel)]="categoryName">
+        </mat-form-field>
+        <button
+            mat-button
+            (click)="addCategory(categoryName)">
+            {{t('tasks.cardsort.addCategoryButton')}}
+        </button>
+    </div>
+</mat-toolbar>
+<app-board
+    [board]="answer.board"
+    [isEditMode]="false">
+</app-board>
+

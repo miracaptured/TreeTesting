@@ -1,0 +1,16 @@
+<table mat-table [dataSource]="taskInfo.percentByVariant" *transloco="let t;">
+    <ng-container matColumnDef="answerVariant">
+        <th mat-header-cell *matHeaderCellDef><b>{{t('analytics.variant.answerVariantLabel')}}</b></th>
+        <td mat-cell *matCellDef="let answerInfo">{{answerInfo.variant}} 
+            <mat-icon *ngIf="answerInfo.variant === taskInfo.trueAnswer" [style.color]="'green'">verified_user</mat-icon>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="percent">
+        <th mat-header-cell *matHeaderCellDef><b>{{t('analytics.variant.answerChosenPercentLabel')}}</b></th>
+        <td mat-cell *matCellDef="let answerInfo"><b>{{answerInfo.percent}}</b></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['answerVariant', 'percent']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['answerVariant', 'percent'];"></tr>
+</table>
+<app-chart [chartOptions]="chartOptions"></app-chart>

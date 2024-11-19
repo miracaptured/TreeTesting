@@ -1,0 +1,52 @@
+version: "3.9"
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: cardsort-postgres
+    environment:
+      PG_HOSTNAME: $HOST
+      POSTGRES_DB: $DBNAME
+      POSTGRES_USER: $DBUSER
+      POSTGRES_PASSWORD: $DBPASSWORD
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./backend/database/scripts:/docker-entrypoint-initdb.d
+      - ./backend/database/config/lib.conf:/var/lib/postgresql/data/postgresql.conf
+    expose:
+      - $PORT
+    ports:
+      - "$PORT:$PORT"
+    networks:
+      - cardsort-net
+    command: -p $PORT
+#  api-cardsort:
+#    image: api-cardsort
+#    container_name: web-api
+#    build:
+#      context: ./backend/src
+#      dockerfile: Dockerfile
+#    env_file:
+#    - .env
+#    ports:
+#    - 8000:8000
+#    networks:
+#      - cardsort-net
+#    depends_on:
+#      - postgresql
+#  web:
+#    image: web-cardsort
+#    container_name: web-client
+#    build:
+#      context: ./TreeTesting
+#      dockerfile: Dockerfile
+#    ports:
+#      - 4200:4200
+#    networks:
+#      - cardsort-net
+#    volumes:
+#      - ./TreeTesting:/project
+#      - /project/node_modules
+networks:
+  cardsort-net:
+    name: cardsort-net
+    driver: bridge

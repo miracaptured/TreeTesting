@@ -1,0 +1,35 @@
+<div style="margin-top: 1vw" *transloco="let t;">
+    <div fxLayout="column" fxLayoutGap="20px" style="width: 100%; height: 100%">
+        <form #newTaskForm="ngForm" fxFlex="100">
+            <mat-dialog-content fxFlex fxLayout="column" fxLayoutGap="10px">
+                <div fxLayout="column">
+                    <mat-form-field>
+                        <mat-label>{{t('tasks.common.nameLabel')}}</mat-label>
+                        <input matInput
+                            type="text"
+                            [(ngModel)]="task.name"
+                            name="inputName"
+                            #inputName="ngModel"
+                        required>
+                        <mat-error *ngIf="inputName.errors?.['required']">{{t('tasks.common.nameRequirement')}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{t('tasks.common.descriptionLabel')}}</mat-label>
+                        <input matInput
+                            type="text"
+                            [(ngModel)]="task.question"
+                            name="inputQuestion"
+                            #inputQuestion="ngModel"
+                        required>
+                        <mat-error *ngIf="inputQuestion.errors?.['required']">{{t('tasks.common.descriptionRequirement')}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-dialog-content>
+        </form>
+        <div>
+            <app-new-variant-task *ngIf="task.type === TaskType.VariantTask" [(task)]="task" [editOnly]="editOnly"></app-new-variant-task>
+            <app-new-cardsort-task *ngIf="task.type === TaskType.CardSort" [(task)]="task" [editOnly]="editOnly"></app-new-cardsort-task>
+            <app-new-tree-task *ngIf="task.type === TaskType.TreeTesting" [(task)]="task" [editOnly]="editOnly"></app-new-tree-task>
+        </div>
+    </div>
+</div>

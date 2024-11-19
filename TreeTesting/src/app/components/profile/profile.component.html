@@ -1,0 +1,67 @@
+<div class="dashboard-content" *transloco="let t;">
+    <mat-card>
+        <div class="actions" fxLayout="row">
+            <button mat-raised-button color="primary" routerLink="/new-survey">{{t('sidenav.newSurveyLabel')}}</button>
+            <span class="flex-spacer"></span>
+            <mat-form-field style="width: 70vw">
+                <input matInput [placeholder]="t('survey.searchPlaceholder')" (keyup)="applyFilter($event)">
+            </mat-form-field>
+        </div>
+        <mat-table [dataSource]="surveys" class="mat-elevation-z8 full-width-table">
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> {{t('survey.table.nameLabel')}} </mat-header-cell>
+                <mat-cell *matCellDef="let survey"> {{survey.surveyName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="responses">
+                <mat-header-cell *matHeaderCellDef> {{t('survey.table.responsesLabel')}} </mat-header-cell>
+                <mat-cell *matCellDef="let survey"> {{survey.totalResponses ?? 0}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="dateCreated">
+                <mat-header-cell *matHeaderCellDef> {{t('survey.table.dateCreatedLabel')}} </mat-header-cell>
+                <mat-cell *matCellDef="let survey"> {{survey.dateCreated}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef> {{t('survey.table.actionsLabel')}} </mat-header-cell>
+                <mat-cell *matCellDef="let survey">
+                    <a
+                        mat-icon-button
+                        [routerLink]="['/analytics', survey.surveyId]"
+                        matTooltip="{{t('survey.table.analyticsLabel')}}">
+                        <mat-icon svgIcon="analytics"></mat-icon>
+                    </a>
+                    <button
+                        mat-icon-button
+                        [cdkCopyToClipboard]="survey.surveyId"
+                        (click)="showMessageCopy()"
+                        matTooltip="{{t('survey.table.shareLabel')}}">
+                        <mat-icon svgIcon="share"></mat-icon>
+                    </button>
+                    <button
+                        mat-icon-button
+                        matTooltip="{{t('survey.table.duplicateLabel')}}"
+                        (click)="duplicateSurvey(survey.surveyId)">
+                        <mat-icon svgIcon="duplicate"></mat-icon>
+                    </button>
+                    <a
+                        mat-icon-button
+                        [routerLink]="['/edit-survey', survey.surveyId]"
+                        matTooltip="{{t('survey.table.editLabel')}}">
+                        <mat-icon svgIcon="edit"></mat-icon>
+                    </a>
+                    <button
+                        mat-icon-button
+                        matTooltip="{{t('survey.table.deleteLabel')}}"
+                        (click)="deleteSurvey(survey.surveyId)">
+                        <mat-icon svgIcon="delete"></mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card>
+</div>

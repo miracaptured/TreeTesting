@@ -1,0 +1,88 @@
+<div fxLayoutGap="20px" *transloco="let t;">
+    <mat-form-field>
+        <mat-label>{{t('tasks.cardsort.types.label')}}</mat-label>
+        <mat-select
+            [(value)]="task.cardSortType"
+            [disabled]="editOnly">
+            <mat-option *ngFor="let type of CardSortType.values()" [value]="type">
+                {{t(CardSortType.toString(type))}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <input type="file"
+        class="file-input"
+        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        (change)="onFileSelected($event)"
+        #fileUpload [hidden]="true">
+    <button
+        mat-button
+        (click)="fileUpload.value=''; fileUpload.click()"
+        [hidden]="editOnly">
+        {{t('tasks.cardsort.uploadNewCardsortButton')}}
+        <mat-icon svgIcon="import"></mat-icon>
+    </button>
+    <button
+        mat-button
+        (click)="downloadTemplate()">
+        {{t('tasks.common.downloadTemplateLabel')}}
+        <mat-icon svgIcon="download_arrow"></mat-icon>
+    </button>
+    <mat-grid-list [cols]="2" cdkDropListGroup style="display: block;" [cdkDropListGroupDisabled]="editOnly">
+        <mat-grid-tile>
+            <mat-grid-tile-header>
+                {{t('tasks.cardsort.cardsColumnLabel')}}
+                <span class="flex-spacer"></span>
+                <button
+                    mat-icon-button
+                    (click)="addValue()"
+                    [hidden]="editOnly">
+                    <mat-icon matIcon svgIcon="add"></mat-icon>
+                </button>
+            </mat-grid-tile-header>
+            <div fxLayout="column" class="lst-vals">
+                <div *ngFor="let value of task.cardSortValues; let i = index" fxLayout="row" class="val">
+                        <app-conditional-input
+                            [(value)]="task.cardSortValues[i]"
+                            [label]="t('tasks.common.valueLabel')"
+                            [editOnly]="editOnly">
+                        </app-conditional-input>
+                    <span class="flex-spacer"></span>
+                    <button
+                        mat-icon-button
+                        (click)="removeValue(i)"
+                        [hidden]="editOnly">
+                        <mat-icon svgIcon="delete"></mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile *ngIf="!isCardSortTypeOpen()">
+            <mat-grid-tile-header>
+                {{t('tasks.cardsort.categoriesColumnLabel')}}
+                <span class="flex-spacer"></span>
+                <button
+                    mat-icon-button
+                    (click)="addCategory()"
+                    [hidden]="editOnly">
+                    <mat-icon matIcon svgIcon="add"></mat-icon>
+                </button>
+            </mat-grid-tile-header>
+            <div fxLayout="column" class="lst-vals">
+                <div *ngFor="let category of task.cardSortCategories; let i = index" fxLayout="row" class="val">
+                    <app-conditional-input
+                        [(value)]="task.cardSortCategories[i]"
+                        [label]="t('tasks.common.valueLabel')"
+                        [editOnly]="editOnly">
+                    </app-conditional-input>
+                    <span class="flex-spacer"></span>
+                    <button
+                        mat-icon-button
+                        (click)="removeCategory(i)"
+                        [hidden]="editOnly">
+                        <mat-icon svgIcon="delete"></mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

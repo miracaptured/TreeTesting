@@ -1,0 +1,28 @@
+<mat-table #myTable [dataSource]="answers" class="mat-elevation-z8 full-width-table">
+    <ng-container matColumnDef="responseId">
+        <mat-header-cell *matHeaderCellDef> Идентификатор прохождения </mat-header-cell>
+        <mat-cell *matCellDef="let answer"> {{answer?.responseId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="text">
+        <mat-header-cell *matHeaderCellDef> Ответ </mat-header-cell>
+        <mat-cell *matCellDef="let answer"> {{answer?.text}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="variantAnswer">
+        <mat-header-cell *matHeaderCellDef> Выбранный вариант </mat-header-cell>
+        <mat-cell *matCellDef="let answer"> {{answer?.text}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cardsort">
+        <mat-header-cell *matHeaderCellDef> Доска карточной сортировки </mat-header-cell>
+        <mat-cell *matCellDef="let answer" style="white-space: pre;"> {{getStringBoardView(answer?.board)}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="clickTrace">
+        <mat-header-cell *matHeaderCellDef> Построенный маршрут </mat-header-cell>
+        <mat-cell *matCellDef="let answer"> {{getStringClickTraceView(answer?.clickTrace)}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="getDisplayedColumns(task)"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: getDisplayedColumns(task);"></mat-row>
+</mat-table>

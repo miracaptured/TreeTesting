@@ -1,0 +1,175 @@
+{
+    "sidenav": {
+        "dashboardLabel": "Dashboard",
+        "newSurveyLabel": "Create new survey",
+        "helpLabel": "Help"
+    },
+    "analytics": {
+        "heatmapLabel": "Sort result matrix",
+        "treemapLabel": "Category names analysis",
+        "matchTableLabel": "Match table",
+        "dendrogramLabel": "Dendrogram",
+        "pieLabel": "Pie chart",
+        "secondsLabel": "sec.",
+        "report": {
+            "saveReportButtonLabel": "Save report",
+            "saveResponsesButtonLabel": "Download responses",
+            "commonInfoLabel": "Common information",
+            "totalRespondentsLabel": "Total number of respondents",
+            "averageSpentTimeLabel": "Average time spent on the survey",
+            "minSpentTimeLabel": "Minimal time spent on the survey",
+            "maxSpentTimeLabel": "Maximal time spent on the survey",
+            "informationByTasksLabel": "Information by tasks",
+            "taskDescriptionLabel": "Description",
+            "responses": "responses"
+        },
+        "tree": {
+            "trueRouteLabel": "The most optimal route",
+            "averageRouteLengthLabel": "Average route length",
+            "averageSpentTimeLabel": "Average spent time",
+            "mostCommonRoutesLabel": "Most popular routes",
+            "directnessPercent": "Directness",
+            "directSuccessPercent": "Direct success",
+            "indirectSuccessPercent": "Indirect success",
+            "failPercent": "Fail",
+            "totalRoutesLabel": "Total number of routes",
+            "treeGradeLabel": "Tree score"
+        },
+        "variant": {
+            "answerVariantLabel": "Answer variant",
+            "answerChosenPercentLabel": "Percent of chosen",
+            "variantDistributionLabel": "Distribution by variants"
+        },
+        "text": {
+            "popularAnswersLabel": "Popular answers"
+        }
+    },
+    "login": {
+        "registerTitle": "Sign Up",
+        "title": "Sign In",
+        "emailPlaceholder": "Email",
+        "passwordPlaceholder": "Password",
+        "usernamePlaceholder": "Username",
+        "inputEmailRequirement": "Email is required",
+        "inputPasswordRequirement": "Password is required",
+        "inputUsernameRequirement": "Username is required",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "noAccount": "Don't have an account?",
+        "register": "Sign up",
+        "areYouRespondentNotResearcher": "You are a respondent, not a researcher?",
+        "surveyCodePlaceholder": "Input survey code",
+        "findSurveyButton": "Find survey by code",
+        "logOut": "Log out"
+    },
+    "survey": {
+        "searchPlaceholder": "Search by name, id or events",
+        "newSurveyName": "New survey",
+        "newSurveyDescription": "Survey description",
+        "constructorLabel": "Constructor",
+        "surveyNameLabel": "Name of the survey",
+        "surveyDescriptionLabel": "Survey description",
+        "addTaskGroupButton": "Add new task group",
+        "nextTaskLabel": "Next",
+        "submit": "Save and close",
+        "taskNameLabel": "Task",
+        "taskGroupLabel": "Task group",
+        "noSuchSurveyMessage": "There is no such survey",
+        "thanksForParticipationMessage": "Thanks for your participation!",
+        "copySurveyName": "Copy of",
+        "table": {
+            "dateCreatedLabel": "Date of creation",
+            "nameLabel": "Survey name",
+            "responsesLabel": "Responses",
+            "actionsLabel": "Actions",
+            "analyticsLabel": "Analytics",
+            "shareLabel": "Share",
+            "copiedToBufferLabel": "Copied to buffer!",
+            "duplicateLabel": "Duplicate",
+            "editLabel": "Edit",
+            "deleteLabel": "Delete",
+            "surveyDeletedLabel": "Survey hase been deleted!"
+        }
+    },
+    "tasks": {
+        "types": {
+            "text": "Text question",
+            "variant": "Test task",
+            "cardSort": "Card sort",
+            "treeTesting": "Search in the tree"
+        },
+        "tree": {
+            "trueRoute": "The most optimal route",
+            "loadedTreeFile": "Uploaded file",
+            "uploadNewTree": "Upload new tree file",
+            "nodeValue": "New value",
+            "nodeValueRequirementLabel": "Node value",
+            "wouldFindItHere": "I would find it here"
+        },
+        "cardsort": {
+            "types": {
+                "label": "Type of card sort",
+                "open": "open",
+                "closed": "closed",
+                "hybrid": "hybrid"
+            },
+            "addCategoryButton": "Add new category",
+            "categoryNameLabel": "Category name",
+            "uploadNewCardsortButton": "Upload new structure",
+            "cardsColumnLabel": "Cards",
+            "categoriesColumnLabel": "Categories",
+            "valuesLabel": "Values"
+        },
+        "common": {
+            "nameLabel": "Task name",
+            "nameRequirement": "Task name is required",
+            "descriptionLabel": "Task description",
+            "descriptionRequirement": "Task description is required",
+            "valueLabel": "Value",
+            "correctAnswerRequirement": "Answer text is required",
+            "downloadTemplateLabel": "Download template"
+        },
+        "text": {
+            "correctAnswerLabel": "True answer"
+        },
+        "variant": {
+            "addAnswerLabel": "Add new variant",
+            "variantLabel": "Variant"
+
+        }
+    },
+    "errors": {
+        "userAlreadyExists": "There already is such user",
+        "serverError": "Server error",
+        "loginError": "Log In error"
+
+    },
+    "help": {
+        "cardSort": {
+            "p1": "The following types of charts are displayed for the statistics of \"Card Sorting\" tasks:",
+            "p2": "displays how often a value has been placed in the corresponding category.",
+            "p3": "shows how often values were in the same category (number of matches).",
+            "p4": "shows the most frequently formed by users groups within the existing categories. The more saturated the color is, the more pronounced is the belonging of the value to a particular category according to respondents.",
+            "p5": "shows the extent to which the values were associated by users with each other. The higher the percentage (value on the abscissa axis), the closer these objects are to each other in the feature space, i.e. more similar in the opinion of users."
+        },
+        "treeTesting": {
+            "p1": "The following types of charts are displayed for the statistics of \"Tree Testing\" tasks:",
+            "p2": "with the distribution of the results of task passes. By default, the total number of generated routes is displayed (task skips are not included in the count). Three bars of different colors show the percentage of users who:",
+            "p3": "went straight to the correct destination.",
+            "p4": "moved on to the correct destination, but their route was not optimal",
+            "p5": "have chosen the wrong destination",
+            "p6": "The optimal route is the shortest path to the destination node set.",
+            "p7": "with the percentage of straightness of the routes made by the respondents.",
+            "p8": "with a tree score for perceptual complexity.",
+            "p9": "Tree rating system (in points):",
+            "p10": "complicated",
+            "p11": "there are significant difficulties in searching",
+            "p12": "there are minor difficulties in searching",
+            "p13": "easy to understand",
+            "p14": "> 3σ; 2σ < Δt < 3σ; σ < Δt < 2σ; < σ, where Δt is the difference between the transit time of one respondent and the average,",
+            "p15": "- parameters by which the tree score is determined (percentages and the number of relevant passes are plotted).",
+            "p16": "Example: if one respondent's transit time is meaningfully greater than the average (of all) transit times, e.g. by 3 RMS, then he or she falls into the > 3σ category.",
+            "p17": "The tree is evaluated by converting the difference of the negative and positive scores to a five-point scale."
+        }
+    }
+}

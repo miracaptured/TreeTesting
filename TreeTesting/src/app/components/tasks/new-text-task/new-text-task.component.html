@@ -1,0 +1,11 @@
+    <mat-form-field *transloco="let t;">
+        <mat-label>{{t('tasks.text.correctAnswerLabel')}}</mat-label>
+        <input matInput
+            type="text"
+            [(ngModel)]="task.trueAnswer"
+            name="inputAnswer"
+            #inputAnswer="ngModel"
+            (change)="changeTask()"
+        required>
+        <mat-error *ngIf="inputAnswer.errors?.['required']">{{t('tasks.common.correctAnswerRequirement')}}</mat-error>
+    </mat-form-field>

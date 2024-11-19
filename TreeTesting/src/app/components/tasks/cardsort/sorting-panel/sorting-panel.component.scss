@@ -1,0 +1,12 @@
+.toolbar {
+    height: 100%;
+    margin-bottom: 1vh;
+}
+
+.toolbar-contents {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}

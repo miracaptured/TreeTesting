@@ -1,0 +1,5 @@
+<h3 *transloco="let t;">{{t('analytics.report.taskDescriptionLabel')}}: <b>{{taskInfo.taskDescription}}</b></h3>
+<app-text-task-info *ngIf="taskInfo.taskType === 0" [taskInfo]="getTextTaskInfo()"></app-text-task-info>
+<app-variant-task-info *ngIf="taskInfo.taskType === 1" [taskInfo]="getVariantTaskInfo()"></app-variant-task-info>
+<app-cardsort-task-info *ngIf="taskInfo.taskType === 2" [taskInfo]="getCardSortTaskInfo()"></app-cardsort-task-info>
+<app-tree-task-info *ngIf="taskInfo.taskType === 3" [taskInfo]="getTreeTestingTaskInfo()"></app-tree-task-info>

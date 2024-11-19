@@ -1,0 +1,8 @@
+<mat-card>
+    <mat-card-header>
+        <h2>{{taskGroup.name}}</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <app-task *ngFor="let task of taskGroup.tasks; let i = index" [task]="taskGroup.tasks[i]" [answer]="answerGroup.answers[i]"></app-task>
+    </mat-card-content>
+</mat-card>

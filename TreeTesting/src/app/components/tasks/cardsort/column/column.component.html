@@ -1,0 +1,26 @@
+<div
+    class="lst-vals"
+    cdkDropList
+    [cdkDropListData]="column.values"
+    (cdkDropListDropped)="drop($event)"
+    fxLayout="column">
+    <div
+      *ngFor="let item of column.values; let i = index; trackBy: trackByFn"
+      cdkDrag [cdkDragStartDelay]="isEditMode ? 500 : 0"
+      fxLayout="row"
+      class="val"
+    >
+    <mat-form-field appearance="fill" *ngIf="isEditMode">
+        <input matInput [(ngModel)]="column.values[i]" name="val{{i}}">
+    </mat-form-field>
+    <mat-label *ngIf="!isEditMode">
+        {{column.values[i]}}
+    </mat-label>
+    <button mat-icon-button (click)="removeValue(i)" *ngIf="isEditMode">
+        <mat-icon svgIcon="delete"></mat-icon>
+    </button>
+    </div>
+    <button mat-icon-button (click)="addValue()" *ngIf="isEditMode && column.name === 'values'">
+        <mat-icon svgIcon="add"></mat-icon>
+    </button>
+</div>

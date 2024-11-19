@@ -1,0 +1,6 @@
+<app-header></app-header>
+<div style="width: 100%">
+    <app-side-navigation *ngIf="checkUser()"></app-side-navigation>
+    <router-outlet *ngIf="!checkUser()"></router-outlet>
+</div>
+<app-loading-indicator [detectRouteTransitions]="true"></app-loading-indicator>

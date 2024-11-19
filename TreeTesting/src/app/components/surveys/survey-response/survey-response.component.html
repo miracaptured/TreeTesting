@@ -1,0 +1,14 @@
+<mat-stepper [linear]="true" #stepper *transloco="let t;">
+    <ng-template matStepperIcon="edit">
+        <mat-icon>done</mat-icon>
+    </ng-template>
+    <mat-step *ngFor="let taskGroup of survey?.taskGroups ?? []; let i = index">
+        <div fxLayout="column" fxLayoutGap="20px">
+            <div fxFlex="25">
+                <button *ngIf="i !== survey?.taskGroups.length - 1" mat-raised-button color="primary" matStepperNext (click)="updateAnswerTime(i)">{{t('survey.nextTaskLabel')}}</button>
+                <button *ngIf="i === survey.taskGroups.length - 1" mat-raised-button color="primary" (click)="complete()">{{t('survey.submit')}}</button>
+            </div>
+            <app-task-group [taskGroup]="survey.taskGroups[i]" [answerGroup]="response.answerGroups[i]"></app-task-group>
+        </div>
+    </mat-step>
+</mat-stepper>

@@ -1,0 +1,91 @@
+<mat-tree
+  [dataSource]="dataSource"
+  [treeControl]="treeControl"
+  *transloco="let t;"
+  style="max-width: 100%;">
+  <mat-tree-node
+    *matTreeNodeDef="let node"
+    matTreeNodePadding
+    [style.display]="isCreatorMode || isCurrentNodeOrItsParentOrHasChildren(node) ? '' : 'none'"
+    (click)="addToTrace(node); setCurrentNode(node);"
+    style="max-width: 100%">
+    <div fxFlex>
+      <span
+        fxLayoutAlign="row"
+        fxLayoutAlign="start center"
+        [class]="isDestination(node) && !isCreatorMode ? 'checklist-leaf-node-checked' : 'checklist-leaf-node'">
+        <span *ngIf="!isCreatorMode || editOnly">{{node.value}}</span>
+        <app-conditional-input
+          *ngIf="isCreatorMode && !editOnly"
+          [(value)]="node.value"
+          [label]="t('tasks.tree.nodeValueRequirementLabel')"
+          (valueChange)="changeTree(node)"
+          [style.color]="node === destination ? 'green' : 'black'">
+        </app-conditional-input>
+        <span class="flex-spacer"></span>
+        <button
+          mat-icon-button
+          [hidden]="!isCreatorMode || editOnly"
+          (click)="addNewValue(node)">
+          <mat-icon svgIcon="add"></mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [hidden]="!isCreatorMode || editOnly"
+          (click)="deleteNode(node)">
+            <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [hidden]="!isCreatorMode || editOnly"
+          (click)="setTrueRoute(node);"
+          [style.color]="node.value === trueRoute[trueRoute.length - 1] ? 'green': null">
+            <mat-icon svgIcon="check_icon"></mat-icon>
+        </button>
+      </span>
+      <button
+        mat-raised-button
+        color="accent"
+        *ngIf="isCurrentNode(node)"
+        (click)="setDestination(node)">
+        {{t('tasks.tree.wouldFindItHere')}}
+      </button>
+    </div>
+  </mat-tree-node>
+
+
+  <mat-tree-node
+    [attr.aria-label]="'toggle ' + node.value"
+    *matTreeNodeDef="let node; when: hasChild"
+    matTreeNodePadding
+    [style.display]="isCreatorMode || isCurrentNodeOrItsParentOrHasChildren(node) ? '' : 'none'"
+    (click)="addToTrace(node); setCurrentNode(node);"
+    style="max-width: 100%">
+    <span
+      fxLayoutAlign="row"
+      fxLayoutAlign="start center"
+      class="checklist-leaf-node">
+      <mat-icon
+        class="mat-icon-rtl-mirror"
+        [svgIcon]="treeControl.isExpanded(node) ? 'chevron_expanded' : 'chevron_right'">
+      </mat-icon>
+      <span
+        *ngIf="!isCreatorMode || editOnly">
+      {{node.value}}
+      </span>
+      <app-conditional-input
+        *ngIf="isCreatorMode && !editOnly"
+        [(value)]="node.value"
+        [label]="t('tasks.tree.nodeValueRequirementLabel')"
+        (valueChange)="changeTree(node)">
+      </app-conditional-input>
+      <span class="flex-spacer"></span>
+      <button
+        mat-icon-button
+        [hidden]="!isCreatorMode || editOnly"
+        (click)="addNewValue(node)">
+        <mat-icon svgIcon="add"></mat-icon>
+      </button>
+    </span>
+  </mat-tree-node>
+</mat-tree>

@@ -1,0 +1,28 @@
+.values-column {
+    margin-right: 2vw
+}
+
+.header {
+    background-color: #D2D5A9;
+    padding: 1vw;
+}
+
+.column {
+    width: 100%;
+    background-color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.item {
+    margin-right: 1vw;
+    margin-bottom: 1vh;
+    flex: 0.5 1 200px;
+}

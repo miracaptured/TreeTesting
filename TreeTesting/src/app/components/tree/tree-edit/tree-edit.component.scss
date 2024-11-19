@@ -1,0 +1,39 @@
+.mat-tree-node {
+  overflow: visible;
+  cursor: move;
+}
+
+.green {
+  color: green;
+}
+
+.drop-above {
+  border-top: 10px solid #2196F3;
+  margin-top: -10px;
+}
+
+.drop-below {
+  border-bottom: 10px solid #2196F3;
+  margin-bottom: -10px;
+}
+
+.drop-center {
+  background-color: darkgray;
+}
+
+.drag-start {
+    background-color: #1565c0;
+    color:honeydew;
+}
+
+.checklist-leaf-node {
+  opacity: 0.77;
+  width: 100%;
+}
+
+.checklist-leaf-node-checked {
+  width: 100%;
+  padding: 5px;
+  color: green;
+  margin-top: 1px;
+}

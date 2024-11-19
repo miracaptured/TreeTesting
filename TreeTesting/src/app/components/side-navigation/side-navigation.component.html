@@ -1,0 +1,31 @@
+<mat-sidenav-container *transloco="let t;" style="height: 100%">
+    <mat-sidenav mode="side" opened class="sidenav-fixed">
+      <mat-nav-list style="width: 14vw">
+        <mat-list-item routerLink="/dashboard">
+            <div fxLayout="row" fxLayoutGap="10px">
+              <mat-icon matListIcon svgIcon="dashboard"></mat-icon>
+              <h3 matLine>{{t('sidenav.dashboardLabel')}}</h3>
+            </div>
+        </mat-list-item>
+        <mat-list-item routerLink="/new-survey">
+          <div fxLayout="row" fxLayoutGap="10px">
+            <mat-icon matListIcon svgIcon="add_test"></mat-icon>
+            <h3 matLine>{{t('sidenav.newSurveyLabel')}}</h3>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <div style="position: fixed; bottom: 0;">
+            <mat-list-item routerLink="/help" style="width: 14vw">
+              <div fxLayout="row" fxLayoutGap="10px">
+                <mat-icon matListIcon svgIcon="help"></mat-icon>
+                <h3 matLine>{{t('sidenav.helpLabel')}}</h3>
+              </div>
+            </mat-list-item>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

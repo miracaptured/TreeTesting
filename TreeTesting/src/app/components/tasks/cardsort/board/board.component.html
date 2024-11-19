@@ -1,0 +1,34 @@
+<div *transloco="let t" cdkDropListGroup fxLayout="row">
+    <div fxLayout="column" class="values-column">
+        <div class="header">
+           {{t('tasks.cardsort.valuesLabel')}}
+        </div>
+        <app-column
+            class="column"
+            [column]="board.columns[0]"
+            [isEditMode]="isEditMode"
+            [isClosedTypeTest]="isCLosedTypeTest">
+        </app-column>
+    </div>
+    <div class="container">
+        <div class="item" fxLayout="column" *ngFor="let column of board.columns.slice(1)">
+            <div class="header">
+                {{column.name}}
+                <span class="flex-spacer"></span>
+                <button
+                    mat-icon-button
+                    *ngIf="isEditMode"
+                    [disabled]="0 < column.values.length"
+                    (click)="removeCategory(column.name)">
+                    <mat-icon svgIcon="delete"></mat-icon>
+                </button>
+            </div>
+            <app-column
+                class="column"
+                [column]="column"
+                [isEditMode]="isEditMode"
+                [isClosedTypeTest]="isCLosedTypeTest">
+            </app-column>
+        </div>
+    </div>
+</div>

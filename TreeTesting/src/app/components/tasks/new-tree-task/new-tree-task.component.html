@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutGap="10px" *transloco="let t;">
+    <p>{{t('tasks.tree.trueRoute')}}: {{task.trueRoute.join(' -> ')}}</p>
+    <input type="file"
+        class="file-input"
+        accept="application/JSON, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        (change)="onFileSelected($event)"
+        #fileUpload
+        [hidden]="true"
+        onclick="this.value=null;">
+    <mat-label [hidden]="editOnly">{{t('tasks.tree.loadedTreeFile')}}: {{fileName}}</mat-label>
+    <button mat-button (click)="fileUpload.click()" [hidden]="editOnly">
+        {{t('tasks.tree.uploadNewTree')}}
+        <mat-icon svgIcon="import"></mat-icon>
+    </button>
+    <button mat-button (click)="downloadTemplate()">
+        {{t('tasks.common.downloadTemplateLabel')}}
+        <mat-icon svgIcon="download_arrow"></mat-icon>
+    </button>
+    <app-tree-edit [(tree)]="task.tree" [editOnly]="editOnly" [isCreatorMode]="true" [trueRoute]="task.trueRoute"></app-tree-edit>
+</div>

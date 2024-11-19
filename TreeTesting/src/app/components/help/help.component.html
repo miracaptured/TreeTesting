@@ -1,0 +1,78 @@
+<div class="content" *transloco="let t;" fxLayout="column" fxLayoutGap="1vw">
+    <mat-card>
+        <mat-card-header>
+            <h1>{{t('help.common.h1')}}</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <p style="white-space: pre;">{{t('help.common.p1')}}</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <h1>{{t('tasks.types.cardSort')}}</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{t('help.cardSort.p1')}}
+                <ol>
+                    <li>
+                        <b>{{t('analytics.heatmapLabel')}}</b> {{t('help.cardSort.p2')}}
+                        <img src="../../../assets/images/heatmap.png">
+                    </li>
+                    <li>
+                        <b>{{t('analytics.matchTableLabel')}}</b> {{t('help.cardSort.p3')}}
+                        <img src="../../../assets/images/matchtable.png">
+                    </li>
+                    <li>
+                        <b>{{t('analytics.treemapLabel')}}</b> {{t('help.cardSort.p4')}}
+                        <img src="../../../assets/images/treemap.png">
+                    </li>
+                    <li>
+                        <b>{{t('analytics.dendrogramLabel')}}</b> {{t('help.cardSort.p5')}}
+                        <img src="../../../assets/images/dendrogram.png">
+                    </li>
+                </ol>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>
+            <h1>{{t('tasks.types.treeTesting')}}</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{t('help.treeTesting.p1')}}
+                <ol>
+                    <li>
+                        <b>{{t('analytics.pieLabel')}}</b> {{t('help.treeTesting.p2')}}
+                        <ul>
+                            <li>
+                                <b>Direct Success</b> - {{t('help.treeTesting.p3')}}
+                            </li>
+                            <li>
+                                <b>Indirect Success</b> - {{t('help.treeTesting.p4')}}
+                            </li>
+                            <li>
+                                <b>Fail</b> - {{t('help.treeTesting.p5')}}
+                            </li>
+                        </ul>
+                        {{t('help.treeTesting.p6')}}
+                    </li>
+                    <li>
+                        <b>{{t('analytics.pieLabel')}}</b> {{t('help.treeTesting.p7')}}
+                    </li>
+                    <li>
+                        <b>{{t('analytics.pieLabel')}}</b> {{t('help.treeTesting.p8')}}
+                        <br>{{t('help.treeTesting.p9')}}
+                        <br>1 - {{t('help.treeTesting.p10')}}
+                        <br>2 - {{t('help.treeTesting.p11')}}
+                        <br>3-4 - {{t('help.treeTesting.p12')}}
+                        <br>5 - {{t('help.treeTesting.p13')}}
+                        <br>
+                        <br>{{t('help.treeTesting.p14')}}
+                        <br>{{t('help.treeTesting.p15')}}
+                        <br>{{t('help.treeTesting.p16')}}
+                        <br><br>{{t('help.treeTesting.p17')}}
+                    </li>
+                </ol>
+            <img src="../../../assets/images/treetest.png">
+        </mat-card-content>
+    </mat-card>
+</div>

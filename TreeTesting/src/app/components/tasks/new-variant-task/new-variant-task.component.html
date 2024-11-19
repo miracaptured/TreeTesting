@@ -1,0 +1,49 @@
+<div *transloco="let t;">
+    <button
+        mat-button
+        (click)="task.answerVariants.push('')"
+        [hidden]="editOnly">
+            {{t('tasks.variant.addAnswerLabel')}}
+        <mat-icon svgIcon="add"></mat-icon>
+    </button>
+    <div fxLayout="column" fxLayoutGap="10px">
+        <div
+            fxLayout="row"
+            fxLayoutGap="10px"
+            *ngFor="let variant of task.answerVariants; let i = index; trackBy: trackByFn">
+            <mat-form-field>
+                <input matInput
+                    type="text"
+                    placeholder="{{t('tasks.variant.variantLabel')}} {{i+1}}"
+                    name="variant{{i}}"
+                    [(ngModel)]="task.answerVariants[i]"
+                    (change)="changeTask()"
+                    [disabled]="editOnly"
+                    [style.color]="task.trueAnswer === variant && task.trueAnswer !== '' ? 'green' : null"
+                    required>
+                <mat-error
+                *ngIf="task.answerVariants[i].trim() === ''">
+                    {{t('tasks.common.correctAnswerRequirement')}}
+                </mat-error>
+            </mat-form-field>
+            <button
+                mat-icon-button
+                (click)="task.trueAnswer = variant"
+                [disabled]="variant === ''"
+                (change)="changeTask()"
+                [hidden]="editOnly">
+                <mat-icon
+                    svgIcon="check_icon">
+                </mat-icon>
+            </button>
+            <button
+                mat-icon-button
+                (click)="removeVariant(i)"
+                [hidden]="editOnly"
+                [disabled]="task.answerVariants.length < 3">
+                <mat-icon svgIcon="delete">
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
